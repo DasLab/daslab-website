@@ -40,7 +40,7 @@ permalink: /contact/
 
 <div class="contact-map-area">
   <a href="https://maps.google.com/maps?q=279+Campus+Dr+W,+Stanford,+CA+94305" target="_blank" rel="noopener noreferrer external">
-    <img src="{{ '/assets/images/site/public/img_contact_map.jpg' | relative_url }}" alt="Map: Beckman Center, 279 Campus Drive West, Stanford CA">
+    <img src="{{ '/assets/images/site/public/img_contact_map.png' | relative_url }}" alt="Map: Beckman Center, 279 Campus Drive West, Stanford CA">
   </a>
   <p>279 Campus Drive West, Stanford, CA 94305</p>
 </div>
