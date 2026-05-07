@@ -7,8 +7,8 @@ permalink: /news/
 ---
 
 {% assign posts = site.news | sort: "date" | reverse %}
-{% assign recent = posts | slice: 0, 20 %}
-{% assign older  = posts | slice: 20, 1000 %}
+{% assign recent = posts | slice: 0, 10 %}
+{% assign older  = posts | slice: 10, 1000 %}
 
 <ul class="news-list">
 {% for post in recent %}
@@ -28,7 +28,7 @@ permalink: /news/
 
 {% if older.size > 0 %}
 <details class="show-more">
-  <summary>Previous news from the Das Lab ({{ older.size }})</summary>
+  <summary>Previous news</summary>
   <ul class="news-list">
     {% for post in older %}
     <li class="news-entry">

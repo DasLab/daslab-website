@@ -6,11 +6,12 @@ hero_slug: resources
 permalink: /resources/
 ---
 
+<div class="word-resources-header">
+  <i class="word-resources-online" aria-label="On-line"></i>
+  <i class="word-resources-resources" aria-label="Resources"></i>
+</div>
+
 <div class="resource-row">
-  <div class="resource-label word-resources-stack">
-    <i class="word-resources-online" aria-label="On-line"></i>
-    <i class="word-resources-resources" aria-label="Resources"></i>
-  </div>
   <p class="resource-text"><strong>For RNA biologists.</strong> Workflows for modeling RNA structure from sequence, including links to all relevant packages and documentation, are available on <a href="https://ribokit.stanford.edu/" target="_blank" rel="noopener noreferrer external">RiboKit</a>.</p>
   <div class="resource-icon">
     <a href="https://ribokit.stanford.edu/" target="_blank" rel="noopener noreferrer external">

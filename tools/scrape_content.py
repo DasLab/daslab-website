@@ -87,9 +87,8 @@ def parse_people(html: str):
         role_el = tr.select_one("p.peopleTEXT")
         role = ""
         if role_el:
-            # take first short paragraph text, normalize whitespace
             txt = " ".join(role_el.get_text(" ", strip=True).split())
-            # drop trailing CV / link blurb common in Rhiju's row
+            txt = re.sub(r"\s+,", ",", txt)  # "Ph.D. Student , 2019" -> "Ph.D. Student, 2019"
             role = txt[:280]
         slug = slugify(name)
         write_md(current_dir / f"{order:02d}-{slug}.md", {
@@ -110,7 +109,8 @@ def parse_people(html: str):
         # find next p.peopleTEXT sibling-ish in document order
         nxt = past.find_next("p", class_="peopleTEXT")
         if nxt:
-            role = " ".join(nxt.get_text(" ", strip=True).split())[:280]
+            role = " ".join(nxt.get_text(" ", strip=True).split())
+            role = re.sub(r"\s+,", ",", role)[:280]
         slug = slugify(name)
         write_md(alumni_dir / f"{alum_index:03d}-{slug}.md", {
             "name": name,
@@ -155,12 +155,14 @@ def parse_publications(html: str):
         if id(el) in seen: continue
         seen.add(id(el))
 
-        # Skip header blurb on the page (no <u> for title, no year in parens, no authors)
-        u_el = el.find("u")
-        if not u_el:
+        # Title: <u> for normal pubs, <span class="contactH1"> for featured pubs
+        title_el = el.find("u") or el.select_one("span.contactH1")
+        if not title_el:
             continue
 
-        title = " ".join(u_el.get_text(" ", strip=True).split())
+        title = " ".join(title_el.get_text(" ", strip=True).split()).strip(' "“”')
+
+        featured = bool(el.find_parent("table", class_="publicationFeatured"))
 
         # Year: prefer (YYYY) in the paragraph text, fall back to current_year
         text = el.get_text(" ", strip=True)
@@ -169,33 +171,38 @@ def parse_publications(html: str):
         if m: year = int(m.group(1))
 
         # Authors: text before the (YYYY) marker
-        authors = ""
         if m:
             authors = text[:m.start()].strip()
         else:
             authors = text.split('"')[0].strip()
         authors = " ".join(authors.split())
+        # Tighten: single space before commas, normalise " ," -> ","
+        authors = re.sub(r"\s+,", ",", authors)
 
         # Journal: <i> after the title
         journal = ""
         i_el = el.find("i")
         if i_el: journal = " ".join(i_el.get_text(" ", strip=True).split())
 
-        # Links
-        pdf_url = ""; doi_url = ""; other_links = []
+        # Links: collect all anchors with a meaningful label
+        pdf_url = ""; doi_url = ""; links = []
         for a in el.find_all("a", href=True):
             href = a["href"]
             label = a.get_text(strip=True)
+            if not label: continue
             llower = label.lower()
-            if "/pub_pdf/" in href or href.endswith(".pdf"):
-                if not pdf_url:
-                    pdf_url = remap_pdf(href) if href.startswith("/") else href
-            elif "doi.org" in href or "doi/" in href:
-                if not doi_url: doi_url = href
-            elif label and href.startswith("http"):
-                other_links.append({"label": label, "url": href})
+            # First Paper/PDF link populates pdf_url; first DOI link populates doi_url.
+            if not pdf_url and ("/pub_pdf/" in href or href.endswith(".pdf") or llower in ("paper","pdf")):
+                pdf_url = remap_pdf(href) if href.startswith("/") else href
+                continue
+            if not doi_url and ("doi.org" in href or "/doi/" in href or llower == "link"):
+                doi_url = href
+                continue
+            # Anything else (Preprint, Server, Code, bioRxiv, etc.) goes into the
+            # links array so it can be rendered alongside.
+            links.append({"label": label, "url": href})
 
-        # Thumb: img inside the same paragraph or its parent row
+        # Thumb: img inside the same paragraph or its parent row.
         thumb = ""
         img = el.find("img")
         if not img:
@@ -209,13 +216,20 @@ def parse_publications(html: str):
         fm = {
             "title": title,
             "year": year or 0,
-            "authors": authors[:600],
+            "authors": authors[:1200],
             "journal": journal,
             "thumb": thumb,
             "pdf": pdf_url,
             "doi": doi_url,
+            "featured": featured if featured else "",
             "order": count,
         }
+        if links:
+            # YAML-friendly inline serialisation handled in write_md via list path,
+            # but each entry is a dict. Use a flatter shape: links_labels / links_urls
+            # so write_md can serialise without a custom schema.
+            fm["link_labels"] = [L["label"] for L in links]
+            fm["link_urls"]   = [L["url"]   for L in links]
         write_md(pubs_dir / f"{count:04d}-{slug}.md", fm)
 
     print(f"  publications: {count}")
@@ -270,19 +284,48 @@ def parse_news(html: str):
         if not title:
             title = text_blob.split(".")[0][:200] if text_blob else "(news)"
 
-        # Body: full text minus the title
+        # Body: full text minus the title.
+        # Mutate the cell trees first: drop the leading date paragraph (we already
+        # have it in frontmatter), and rewrite the legacy "read more" anchor —
+        # which wraps an empty CSS-styled div — into a proper textual link.
         body_html = ""
         for cell in cells:
-            # skip the image-only cell
             if cell.find("img") and not cell.find(string=re.compile(r"\w")):
                 continue
-            # take the inner HTML, fix urls
+            # Strip leading <p class="yearTEXT">...the date...</p> so it's not
+            # rendered twice on the news index.
+            for p in list(cell.find_all("p", class_="yearTEXT", limit=2)):
+                ptxt = p.get_text(strip=True)
+                # Heuristic: if the paragraph is just a date, remove it.
+                if re.match(r"^[A-Za-z]+\s+\d{1,2}?,?\s*\d{4}$", ptxt) or re.match(r"^[A-Za-z]+\s+\d{4}$", ptxt):
+                    p.decompose()
+
+            # The legacy markup uses <a class="btn_readmore"><div class="imgsp_more_read"></div></a>
+            # — an anchor whose only child is an empty CSS-styled div. Kramdown can't
+            # parse this when there's a blank line between <a> and </a>, so the </a>
+            # ends up rendered as text. Replace with a clean inline "Read more →" link.
+            for a in cell.find_all("a", class_="btn_readmore"):
+                href = a.get("href", "#")
+                a.clear()
+                a["class"] = "read-more"
+                a.string = "Read more →"
+            # Also catch read-more anchors that aren't tagged with btn_readmore but
+            # wrap only a more_read/info background-image div.
+            for a in list(cell.find_all("a")):
+                child_divs = [c for c in a.find_all(recursive=False) if c.name == "div"]
+                if (a.get_text(strip=True) == "" and child_divs
+                        and any("imgsp_more" in (d.get("class") or []) for d in child_divs)):
+                    href = a.get("href", "#")
+                    a.clear()
+                    a["class"] = "read-more"
+                    a.string = "Read more →"
+
             for t in cell.find_all("img"):
                 if t.get("src"): t["src"] = remap_url(t["src"])
             for t in cell.find_all("a", href=True):
                 href = t["href"]
                 t["href"] = remap_url(href) if href.startswith("/site_") else href
-            # serialize, then strip the wrapping <td>...</td>
+
             inner = cell.decode_contents()
             body_html += inner + "\n"
 
