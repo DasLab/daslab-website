@@ -625,9 +625,18 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   }
 }
 
-@media (max-width: $bp-phone) {
+@media (max-width: $bp-tablet) {
   .news-entry { grid-template-columns: 1fr; }
-  .news-entry .news-thumb { width: 100%; max-width: 320px; max-height: none; height: auto; }
+  .news-entry .news-thumb {
+    width: 100%;
+    max-width: 320px;
+    max-height: none;
+    height: auto;
+    /* Override the desktop right-justify so the thumb is centered inside
+       the single-column row on phone & landscape mobile. */
+    justify-self: center;
+    margin: 0 auto;
+  }
 }
 
 /* News post page */
