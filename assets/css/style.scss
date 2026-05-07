@@ -307,12 +307,12 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
 /* Two horizontal decorative bars (sliced from nav_banners.png) */
 .home-divider-bars {
-  display: flex;
-  /* Sit at the regular site-main width while the banner above retains
-     its 5% breakout — visually compensates for the right-edge whitespace
-     the source PNG has baked in beyond the gray block. The bars (and
-     the callouts + institutional logos below) all live at the same
-     'inner' width. */
+  /* Trial: hide entirely on the home page. If the page looks too sparse
+     without them, remove this `display: none` to bring them back. */
+  display: none;
+
+  /* (Originals kept below in case we restore.) */
+  flex-flow: row nowrap;
   width: 100%;
   margin: 1rem auto 1.5rem;
   max-width: none;
