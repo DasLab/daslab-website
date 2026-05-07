@@ -2,36 +2,34 @@
 layout: page
 title: Contact
 slug: contact
+hero_slug: contact
 permalink: /contact/
 ---
 
 <div class="contact-grid">
   <div>
-    <h2>Connect with us</h2>
+    <i class="word-contact" aria-label="Connect with us"></i>
 
     <div class="contact-block">
       <p><strong>Rhiju Das</strong> is in <strong>B421A</strong> (office), embedded in our home lab <strong>B419</strong> in the Beckman Center at Stanford University.</p>
     </div>
 
     <div class="contact-block">
-      <h2>Directions</h2>
-      <p>Take the elevators to the fourth floor of the Beckman Center. Step out and turn left, then turn left again at the first hallway before the water fountain. B419 will be the second to last door to your left at the end of the hallway.</p>
+      <p><strong>To get to the lab</strong>, take the elevators to the fourth floor of the Beckman Center. Step out and turn left, then turn left again at the first hallway before the water fountain. B419 will be the second to last door to your left at the end of the hallway.</p>
     </div>
 
     <div class="contact-block">
-      <h2>Phone</h2>
-      <p>Office &nbsp; (650) 723-5976<br>
-      Admin &nbsp; (650) 498-5118</p>
+      <p><strong>Office</strong> &nbsp; (650) 723-5976<br>
+      <strong>Admin</strong> &nbsp; (650) 498-5118</p>
     </div>
 
     <div class="contact-block">
-      <h2>E-mail</h2>
-      <p>rhiju <em>[at]</em> stanford.edu</p>
+      <p><strong>E-mail</strong> &nbsp; rhiju <em>[at]</em> stanford.edu</p>
     </div>
 
     <div class="contact-block">
-      <h2>Administrative assistant</h2>
-      <p>Lisa Sharp — lasharp <em>[at]</em> stanford.edu</p>
+      <p><strong>Administrative assistant:</strong><br>
+      Lisa Sharp, lasharp <em>[at]</em> stanford.edu</p>
     </div>
 
     <p><strong>Interested in working with us?</strong> Reach out to Rhiju Das.</p>

@@ -2,10 +2,16 @@
 layout: page
 title: Publications
 slug: publications
+hero_slug: publications
 permalink: /publications/
 ---
 
-<p>Looking for a specific paper? <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=das+rhiju" target="_blank" rel="noopener noreferrer external">Search PubMed</a>.</p>
+<p class="pub-search">
+  <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=das+rhiju" target="_blank" rel="noopener noreferrer external">
+    <i class="pub-search-arrow" aria-hidden="true"></i>
+    Search for papers from the Das Lab on <strong>PubMed</strong>
+  </a>
+</p>
 
 {% assign pubs = site.publications | sort: "order" %}
 {% assign years = pubs | map: "year" | uniq %}

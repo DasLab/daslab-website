@@ -1,0 +1,12 @@
+{% comment %}
+Renders the per-page hero banner: logo_<slug>.jpg as a wide background photo,
+with icon_<slug>.png (the teal "<page> ::" tab) anchored to the right.
+Set `hero_slug` in the page frontmatter (research, news, people, publications,
+resources, contact) to opt in.
+{% endcomment %}
+{% if include.slug or page.hero_slug %}
+{% assign slug = include.slug | default: page.hero_slug %}
+<div class="page-hero" style="background-image: url('{{ '/assets/images/site/public/logo_' | append: slug | append: '.jpg' | relative_url }}');" role="img" aria-label="{{ page.title | default: slug }}">
+  <img class="page-hero-tab" src="{{ '/assets/images/site/public/icon_' | append: slug | append: '.png' | relative_url }}" alt="{{ page.title | default: slug }}">
+</div>
+{% endif %}

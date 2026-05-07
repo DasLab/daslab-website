@@ -2,6 +2,7 @@
 layout: page
 title: People
 slug: people
+hero_slug: people
 permalink: /people/
 ---
 

@@ -159,31 +159,142 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   margin: 0 auto;
 }
 
+/* ---------- per-page hero ---------- */
+
+.page-hero {
+  position: relative;
+  max-width: $container;
+  margin: 1rem auto 2rem;
+  aspect-ratio: 973 / 221;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+}
+
+.page-hero-tab {
+  position: absolute;
+  right: -1%;
+  bottom: 8%;
+  width: 36%;
+  height: auto;
+  max-height: 60%;
+  z-index: 2;
+  filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.25));
+}
+
+/* ---------- sprite word-art (legacy CSS sprites preserved) ---------- */
+
+.word-home-what,
+.word-home-strive {
+  display: inline-block;
+  background: url("/assets/images/site/public/word_home.png") no-repeat;
+  flex-shrink: 0;
+}
+.word-home-what   { width: 119px; height: 70px; background-position: 0 0; }
+.word-home-strive { width: 207px; height: 95px; background-position: -121px 0; }
+
+.word-research-1,
+.word-research-2,
+.word-research-3 {
+  display: inline-block;
+  background: url("/assets/images/site/public/word_research.png") no-repeat;
+  flex-shrink: 0;
+}
+.word-research-1 { width: 138px; height: 68px;  background-position: -1px 0; }
+.word-research-2 { width: 138px; height: 121px; background-position: 0 -69px; }
+.word-research-3 { width: 138px; height: 84px;  background-position: 0 -191px; }
+
+.word-resources-online,
+.word-resources-resources {
+  display: inline-block;
+  background: url("/assets/images/site/public/word_resources.png") no-repeat;
+}
+.word-resources-online    { width: 164px; height: 67px; background-position: 0 0; }
+.word-resources-resources { width: 164px; height: 44px; background-position: 0 -67px; }
+
+.word-resources-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.word-contact {
+  display: block;
+  width: 184px; height: 62px;
+  background: url("/assets/images/site/public/word_contact.png") no-repeat;
+}
+
 /* ---------- homepage ---------- */
+
+.home-stage {
+  position: relative;
+  max-width: 1022px;
+  margin: 0 auto;
+}
 
 .home-banner {
   width: 100%;
+  aspect-ratio: 1022 / 348;
+  background: url("/assets/images/site/public/logo_home.png") no-repeat center top / 100% auto;
+  border-radius: 2px;
+}
+
+/* Circular teal "research →" tab anchored to the banner's left edge */
+.home-research-arrow {
+  position: absolute;
+  left: -42px;
+  top: 28%;
+  width: 53px;
+  height: 201px;
+  background: url("/assets/images/site/public/nav_research.png") no-repeat 0 0;
+  background-size: 106px 201px;
+  text-indent: -9999px;
+  overflow: hidden;
+  &:hover { background-position: -53px 0; }
+}
+
+/* Two horizontal decorative bars (sliced from nav_banners.png) */
+.home-divider-bars {
+  display: flex;
   max-width: 1022px;
   margin: 1rem auto 1.5rem;
-  aspect-ratio: 1022 / 348;
-  background: url("{{ '/assets/images/site/public/logo_home.png' | relative_url }}") no-repeat center top / 100% auto;
-  border-radius: 4px;
+  height: 39px;
+  gap: 8px;
+}
+.home-divider-bars .bar-dark,
+.home-divider-bars .bar-light {
+  height: 39px;
+  background: url("/assets/images/site/public/nav_banners.png") no-repeat;
+}
+.home-divider-bars .bar-dark  { flex: 0 0 60%; background-position: 0 -15px; }
+.home-divider-bars .bar-light { flex: 1 1 auto; background-position: -514px -55px; }
+
+.home-callouts {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+  max-width: 1022px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1rem;
 }
 
 .home-mission {
-  max-width: $content;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  font-size: 1.05rem;
-  line-height: 1.6;
+  margin: 0;
+  padding: 0.5rem 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
   text-align: justify;
   color: $text-muted;
 }
 
-.home-divider {
-  border-top: 1px dotted $text-faint;
-  max-width: $container;
-  margin: 2rem auto;
+@media (max-width: $bp-tablet) {
+  .home-research-arrow { display: none; }
+  .home-callouts { grid-template-columns: 1fr; }
+  .home-callouts .word-home-what,
+  .home-callouts .word-home-strive { transform: scale(0.85); transform-origin: top left; }
 }
 
 /* ---------- people ---------- */
@@ -256,6 +367,28 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
 /* ---------- publications ---------- */
 
+.pub-search {
+  margin: 1.5rem 0 2rem;
+  font-size: 1.1rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: $text;
+    &:hover { color: $accent-hover; }
+  }
+}
+.pub-search-arrow {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: url("/assets/images/site/public/nav_arrow.png") no-repeat 0 0;
+  background-size: 115px 28px;
+  flex-shrink: 0;
+}
+.pub-search a:hover .pub-search-arrow { background-position: -29px 0; }
+
 .publications-year {
   color: $accent-hover;
   font-size: 2rem;
@@ -327,39 +460,44 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
 .news-entry {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 1.25rem;
+  grid-template-columns: 220px 1fr;
+  gap: 1.5rem;
   align-items: start;
-  padding: 1rem 0;
-  border-bottom: 1px solid $rule;
+  padding: 1.25rem 0;
+  border-bottom: 1px dotted $text-faint;
 
   .news-thumb {
     width: 200px;
-    height: 130px;
-    object-fit: cover;
-    background: $accent-bg;
+    max-height: 200px;
+    object-fit: contain;
+    background: transparent;
     border-radius: 3px;
+    align-self: start;
+    justify-self: end;
   }
   .news-date {
-    font-size: 0.85rem;
+    font-style: italic;
+    font-size: 0.95rem;
     color: $accent-hover;
-    margin: 0;
+    margin: 0 0 0.5rem;
     font-weight: 500;
   }
-  .news-headline {
-    margin: 0.2rem 0 0.4rem;
-    font-size: 1rem;
-    line-height: 1.4;
-    color: $text;
-    font-weight: 800;
-    a { color: inherit; &:hover { color: $accent-hover; } }
+  .news-body {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: $text-muted;
+
+    p { margin: 0 0 0.6rem; }
+    p:last-child { margin-bottom: 0; }
+    a { color: $accent-hover; &:hover { color: $text; } }
+    strong, b { color: $text; }
+    img { max-width: 100%; height: auto; margin: 0.5rem 0; }
   }
-  .news-excerpt { margin: 0; font-size: 0.92rem; color: $text-muted; line-height: 1.5; }
 }
 
 @media (max-width: $bp-phone) {
   .news-entry { grid-template-columns: 1fr; }
-  .news-entry .news-thumb { width: 100%; max-width: 320px; height: auto; aspect-ratio: 200 / 130; }
+  .news-entry .news-thumb { width: 100%; max-width: 320px; max-height: none; height: auto; }
 }
 
 /* News post page */
@@ -396,45 +534,40 @@ details.show-more {
   &[open] > summary { margin-bottom: 1rem; }
 }
 
-/* ---------- research / resources cards ---------- */
+/* ---------- resources rows (small inline icon + text) ---------- */
 
-.cards {
+.resource-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 200px 1fr 220px;
   gap: 1.5rem;
-  margin: 1.5rem 0;
-}
-@media (max-width: $bp-tablet) { .cards { grid-template-columns: 1fr; } }
+  align-items: center;
+  padding: 1.25rem 0;
+  border-bottom: 1px dotted $text-faint;
 
-.card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid $rule;
-  border-radius: 6px;
-  padding: 1.25rem;
-  background: #fff;
-  transition: border-color 0.15s;
-  &:hover { border-color: $accent-hover; }
+  &:first-of-type { padding-top: 0.5rem; }
+  &:last-of-type { border-bottom: none; }
 
-  .card-image {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 0.75rem;
-    background: $accent-bg;
-  }
-  .card-title {
-    margin: 0 0 0.4rem;
-    font-size: 1.05rem;
-    color: $accent;
-    font-weight: 800;
-  }
-  .card-body {
+  .resource-text {
     margin: 0;
-    font-size: 0.9rem;
     color: $text-muted;
+    font-size: 0.95rem;
     line-height: 1.55;
+    grid-column: 2;
+  }
+  .resource-icon {
+    grid-column: 3;
+    text-align: right;
+    img { max-width: 200px; height: auto; }
+  }
+  /* word_resources sprite anchors the left column for the first row only */
+  .resource-label { grid-column: 1; align-self: center; }
+}
+
+@media (max-width: $bp-tablet) {
+  .resource-row {
+    grid-template-columns: 1fr;
+    .resource-text, .resource-icon, .resource-label { grid-column: 1; }
+    .resource-icon { text-align: center; }
   }
 }
 

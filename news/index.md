@@ -2,6 +2,7 @@
 layout: page
 title: News
 slug: news
+hero_slug: news
 permalink: /news/
 ---
 
@@ -17,10 +18,9 @@ permalink: /news/
     {% else %}
       <div class="news-thumb"></div>
     {% endif %}
-    <div>
+    <div class="news-body">
       <p class="news-date">{{ post.date | date: "%B %-d, %Y" }}</p>
-      <h2 class="news-headline"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p class="news-excerpt">{{ post.content | strip_html | truncate: 220 }}</p>
+      {{ post.content }}
     </div>
   </li>
 {% endfor %}
@@ -37,10 +37,9 @@ permalink: /news/
       {% else %}
         <div class="news-thumb"></div>
       {% endif %}
-      <div>
+      <div class="news-body">
         <p class="news-date">{{ post.date | date: "%B %-d, %Y" }}</p>
-        <h2 class="news-headline"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        <p class="news-excerpt">{{ post.content | strip_html | truncate: 220 }}</p>
+        {{ post.content }}
       </div>
     </li>
     {% endfor %}
