@@ -217,17 +217,22 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   line-height: 1.05;
 }
 .home-callout-left {
-  font-size: 2rem;
+  font-size: 2.6rem;
   font-weight: 700;
   text-align: left;
   letter-spacing: -0.02em;
   color: $text;
+  line-height: 1;
+  .accent { color: $accent-hover; }
 }
 .home-callout-right {
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-align: left;
-  strong { color: $accent-hover; font-weight: 800; }
+  line-height: 1.1;
+  color: $text;
+  strong { color: inherit; font-weight: 800; }
+  .accent { color: $accent-hover; }
 }
 
 .word-research-1,
