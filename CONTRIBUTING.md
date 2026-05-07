@@ -44,8 +44,19 @@ The `last_name` is used for sorting (alphabetical, case-insensitive) — write i
 - `cv_url:` — link to a CV (e.g., a Dropbox link)
 - `profile_url:` — link to a Stanford profile page
 - `pi: true` — pins this person to the end of the current-members list. Only the principal investigator should have this.
+- `visible: false` — temporarily hides this person from the people page without deleting the file or moving them to alumni. Useful for, e.g., a rotation student who hasn't decided whether to stay long-term. Remove the line (or set to `true`) to show them again.
 
 ---
+
+## Hiding someone temporarily (without making them alumni)
+
+If you need to hide someone from the people page but they're not alumni — say a rotation student who hasn't decided whether to stay — open their `_people/<name>.md` file and add this line to the frontmatter:
+
+```yaml
+visible: false
+```
+
+The page will leave them out on the next rebuild. To bring them back, delete that line (or change to `visible: true`). This works for both current members and alumni.
 
 ## Moving someone to alumni
 

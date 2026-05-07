@@ -6,7 +6,7 @@ hero_slug: people
 permalink: /people/
 ---
 
-{% assign all_current = site.people | where: "status", "current" %}
+{% assign all_current = site.people | where: "status", "current" | where_exp: "p", "p.visible != false" %}
 {% assign non_pi = all_current | where_exp: "p", "p.pi != true" | sort_natural: "last_name" %}
 {% assign pi     = all_current | where: "pi", true %}
 {% assign current = non_pi | concat: pi %}
@@ -16,7 +16,7 @@ permalink: /people/
   within each year. Liquid's sort isn't reliably stable, so we group by
   year explicitly and concat in order.
 {% endcomment %}
-{% assign all_alumni = site.people | where: "status", "alumnus" %}
+{% assign all_alumni = site.people | where: "status", "alumnus" | where_exp: "a", "a.visible != false" %}
 {% assign years = all_alumni | map: "end_year" | uniq | compact | sort | reverse %}
 {% assign alumni = "" | split: "" %}
 {% for y in years %}
