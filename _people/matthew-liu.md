@@ -1,8 +1,8 @@
 ---
 name: Matthew Liu
-role: Ph.D Rotation Student Computer Science, 2026-2026
+role: Ph.D Rotation Student Computer Science
 photo: /assets/images/people/MatthewL.jpg
-status: alumnus
-end_year: 2026
+status: current
 last_name: liu
+visible: false
 ---
