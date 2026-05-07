@@ -151,7 +151,7 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 .site-main {
   max-width: $container;
   margin: 0 auto;
-  padding: 1rem 1.25rem 1rem;
+  padding: 1rem 1.25rem 0.2rem;
 }
 
 .page-content {
@@ -279,7 +279,7 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   height: 39px;
   gap: 8px;
 }
-.home-divider-bars .bar-dark  { flex: 0 0 70%; }
+.home-divider-bars .bar-dark  { flex: 0 0 60%; }
 .home-divider-bars .bar-light { flex: 1 1 auto; }
 .home-divider-bars .bar-dark,
 .home-divider-bars .bar-light {
@@ -479,38 +479,35 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
     align-self: start;
   }
   .pub-text { min-width: 0; }
-  .pub-title {
-    margin: 0.15rem 0 0.2rem;
-    font-size: 0.95rem;
-    color: $text;
-    font-weight: 400;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    line-height: 1.05;
-  }
-  .pub-authors {
-    margin: 0;
-    font-size: 0.9rem;
-    color: $text-muted;
-    line-height: 1.05;
-  }
-  .pub-meta {
-    margin: 0;
-    font-size: 0.9rem;
-    color: $text-faint;
-    line-height: 1.05;
-  }
+  .pub-title,
+  .pub-authors,
+  .pub-meta,
   .pub-links {
-    margin: 0.2rem 0 0;
-    font-size: 0.85rem;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+  .pub-title { color: $text; font-weight: 400; }
+  .pub-authors { color: $text-muted; }
+  .pub-meta { color: $text-faint; }
+  .pub-links {
     color: $accent-hover;
-    line-height: 1.05;
+    margin-top: 0.15rem;
     a {
       color: $accent-hover;
       &:hover { color: $text; }
       &::before { content: " | "; color: $text-faint; padding: 0 0.15rem; }
       &:first-child::before { display: none; }
     }
+  }
+
+  /* Title styling depends on whether the entry has a thumbnail:
+     - With thumbnail (featured-style): bold, no underline.
+     - Without thumbnail (one-line entries): underlined, regular weight. */
+  &:has(.pub-thumb) .pub-title { font-weight: 800; }
+  &:not(:has(.pub-thumb)) .pub-title {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 }
 
@@ -719,13 +716,14 @@ details.show-more {
 }
 @media (max-width: $bp-phone) { .contact-grid { grid-template-columns: 1fr; } }
 
-.contact-map-area {
-  max-width: 600px;
-  margin: 0 0 1rem;
+.contact-map-link {
+  display: block;
+  margin: 1rem 0 0;
+  max-width: 360px;
 
-  img { width: 100%; height: auto; border: 0; border-radius: 4px; display: block; }
-  p { margin: 0.5rem 0 0; color: $text-faint; font-size: 0.9rem; }
+  img.contact-map { width: 100%; height: auto; display: block; border: 0; border-radius: 4px; }
 }
+.contact-address { margin: 0.4rem 0 0; color: $text-faint; font-size: 0.9rem; }
 
 /* ---------- footer ---------- */
 

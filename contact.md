@@ -35,12 +35,10 @@ permalink: /contact/
     </div>
 
     <p><strong>Interested in working with us?</strong> Reach out to Rhiju Das.</p>
-  </div>
-</div>
 
-<div class="contact-map-area">
-  <a href="https://maps.google.com/maps?q=279+Campus+Dr+W,+Stanford,+CA+94305" target="_blank" rel="noopener noreferrer external">
-    <img src="{{ '/assets/images/site/public/img_contact_map.png' | relative_url }}" alt="Map: Beckman Center, 279 Campus Drive West, Stanford CA">
-  </a>
-  <p>279 Campus Drive West, Stanford, CA 94305</p>
+    <a class="contact-map-link" href="https://maps.google.com/maps?q=279+Campus+Dr+W,+Stanford,+CA+94305" target="_blank" rel="noopener noreferrer external">
+      <img class="contact-map" src="{{ '/assets/images/site/public/img_contact_map.png' | relative_url }}" alt="Map: Beckman Center, 279 Campus Drive West, Stanford CA">
+    </a>
+    <p class="contact-address">279 Campus Drive West, Stanford, CA 94305</p>
+  </div>
 </div>
