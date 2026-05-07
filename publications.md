@@ -8,8 +8,8 @@ permalink: /publications/
 
 <p class="pub-search">
   <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=das+rhiju" target="_blank" rel="noopener noreferrer external">
-    <i class="pub-search-arrow" aria-hidden="true"></i>
-    Search for papers from the Das Lab on <strong>PubMed</strong>
+    <span class="pub-search-arrow" aria-hidden="true"></span>
+    <span class="pub-search-text">Search for papers from the Das Lab on <strong>PubMed</strong></span>
   </a>
 </p>
 

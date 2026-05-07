@@ -446,6 +446,12 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   text-align: left;
 
   a {
+    /* inline-flex with align-items: center so the arrow icon and the
+       text are vertically centered relative to each other regardless of
+       text line-height. */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     color: $accent-hover;
     &:hover { color: $text; }
   }
@@ -453,10 +459,9 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 }
 .pub-search-arrow {
   display: inline-block;
+  flex-shrink: 0;
   width: 28px;
   height: 28px;
-  vertical-align: middle;
-  margin-right: 0.5rem;
   background: url("{{ '/assets/images/site/public/nav_arrow.png' | relative_url }}") no-repeat 0 0;
   background-size: 115px 28px;
 }
