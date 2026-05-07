@@ -743,7 +743,7 @@ details.show-more {
 .footer-bars {
   display: flex;
   height: 39px;
-  margin-bottom: 0.08rem;
+  margin-bottom: 1rem;
 }
 .footer-bar-dark,
 .footer-bar-teal {
@@ -783,6 +783,6 @@ details.show-more {
     &:hover { opacity: 1; }
   }
 
-  .logo-stanford-medicine { height: 15px; }
+  .logo-stanford-medicine { height: 30px; }
   .logo-hhmi              { height: 30px; }
 }
