@@ -6,10 +6,14 @@ hero_slug: people
 permalink: /people/
 ---
 
+{% assign current = site.people | where: "status", "current" | sort_natural: "name" %}
+{% assign current = current | sort: "role_order" %}
+{% assign alumni  = site.people | where: "status", "alumnus" %}
+{% assign alumni  = alumni | sort: "name" | sort: "end_year" | reverse %}
+
 <h2 class="section-heading">Current</h2>
 
 <div class="people-grid">
-{% assign current = site.people | sort: "order" %}
 {% for member in current %}
   <div class="person-card">
     {% if member.photo %}<img class="person-photo" src="{{ member.photo | relative_url }}" alt="{{ member.name }}">{% else %}<div class="person-photo"></div>{% endif %}
@@ -27,9 +31,8 @@ permalink: /people/
 
 <h2 class="section-heading">Alumni</h2>
 
-{% assign alumni = site.alumni | sort: "order" %}
 {% assign visible = alumni | slice: 0, 30 %}
-{% assign hidden  = alumni | slice: 30, 1000 %}
+{% assign hidden  = alumni | slice: 30, 9999 %}
 
 <ul class="alumni-list">
 {% for a in visible %}

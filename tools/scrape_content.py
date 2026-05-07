@@ -66,19 +66,36 @@ def write_md(path: Path, fm: dict, body: str = ""):
 
 # ---------- people / alumni ----------
 
-def parse_people(html: str):
-    soup = BeautifulSoup(html, "html.parser")
-    current_dir = ROOT / "_people"
-    alumni_dir = ROOT / "_alumni"
-    # wipe to avoid stale entries
-    for d in (current_dir, alumni_dir):
-        if d.exists():
-            for f in d.glob("*.md"): f.unlink()
+def _role_order(role: str) -> int:
+    r = role.lower()
+    if "principal investigator" in r: return 1
+    if "lab manager" in r or "manager" in r: return 2
+    if "research specialist" in r or "research scientist" in r: return 3
+    if "postdoctoral" in r or "postdoc" in r: return 4
+    if "ph.d." in r or "phd" in r or "graduate student" in r: return 5
+    if "rotation" in r: return 6
+    if "undergraduate" in r or "intern" in r: return 7
+    return 9
 
-    order = 0
-    # current members live in <tr class="current_member">
+
+def _end_year(role: str):
+    years = [int(y) for y in re.findall(r"\b(19\d{2}|20\d{2})\b", role)]
+    return max(years) if years else None
+
+
+def parse_people(html: str):
+    """Emit a unified _people/ collection. Current members get
+    status: current and a derived role_order; alumni get status: alumnus
+    and (where parseable from the role string) end_year. Filenames are
+    plain <slug>.md — sorting is done by frontmatter on the page."""
+    soup = BeautifulSoup(html, "html.parser")
+    people_dir = ROOT / "_people"
+    if people_dir.exists():
+        for f in people_dir.glob("*.md"): f.unlink()
+
+    current_count = alum_count = 0
+
     for tr in soup.select("tr.current_member"):
-        order += 1
         img = tr.find("img")
         photo = remap_url(img["src"]) if img and img.get("src") else ""
         name_el = tr.select_one("p.peopleH2")
@@ -88,37 +105,36 @@ def parse_people(html: str):
         role = ""
         if role_el:
             txt = " ".join(role_el.get_text(" ", strip=True).split())
-            txt = re.sub(r"\s+,", ",", txt)  # "Ph.D. Student , 2019" -> "Ph.D. Student, 2019"
+            txt = re.sub(r"\s+,", ",", txt)
             role = txt[:280]
         slug = slugify(name)
-        write_md(current_dir / f"{order:02d}-{slug}.md", {
+        write_md(people_dir / f"{slug}.md", {
             "name": name,
             "role": role,
             "photo": photo,
-            "order": order,
+            "status": "current",
+            "role_order": _role_order(role),
         })
+        current_count += 1
 
-    # alumni — past members are paragraphs marked .past_member; they're listed
-    # below current_member rows. Walk all .past_member name paragraphs and pair
-    # each with the immediately following peopleTEXT (role/years).
-    alum_index = 0
     for past in soup.select("p.past_member"):
-        alum_index += 1
         name = past.get_text(strip=True)
         role = ""
-        # find next p.peopleTEXT sibling-ish in document order
         nxt = past.find_next("p", class_="peopleTEXT")
         if nxt:
             role = " ".join(nxt.get_text(" ", strip=True).split())
             role = re.sub(r"\s+,", ",", role)[:280]
         slug = slugify(name)
-        write_md(alumni_dir / f"{alum_index:03d}-{slug}.md", {
-            "name": name,
-            "role": role,
-            "order": alum_index,
-        })
+        target = people_dir / f"{slug}.md"
+        if target.exists():
+            target = people_dir / f"{slug}-alumni.md"
+        fm = {"name": name, "role": role, "status": "alumnus"}
+        ey = _end_year(role)
+        if ey: fm["end_year"] = ey
+        write_md(target, fm)
+        alum_count += 1
 
-    print(f"  people: {order} current, {alum_index} alumni")
+    print(f"  people: {current_count} current, {alum_count} alumni (single _people/)")
 
 
 # ---------- publications ----------

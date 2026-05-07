@@ -8,8 +8,6 @@ permalink: /:collection/:name/
 collections:
   people:
     output: false
-  alumni:
-    output: false
   publications:
     output: false
   news:
