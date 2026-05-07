@@ -518,6 +518,17 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
     a { color: $accent-hover; &:hover { color: $text; } }
     strong, b { color: $text; }
     img { max-width: 100%; height: auto; margin: 0.5rem 0; }
+    .read-more {
+      display: inline-block;
+      margin-top: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      background: $text;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 800;
+      border-radius: 999px;
+      &:hover { background: $accent; color: #fff; }
+    }
   }
 }
 
