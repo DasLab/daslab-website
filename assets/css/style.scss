@@ -83,10 +83,10 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   margin-left: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.8rem;
   font-weight: 800;
   font-size: 0.85rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 
   a {
@@ -246,8 +246,10 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
 .home-stage {
   position: relative;
-  max-width: 1022px;
-  margin: 0 auto;
+  /* Break ~5% past the site-main container so the hero feels bigger. */
+  width: 105%;
+  margin: 0 -2.5%;
+  max-width: none;
 }
 
 .home-banner {
