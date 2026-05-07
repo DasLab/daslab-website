@@ -336,9 +336,9 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
 .home-mission {
   margin: 0;
-  padding: 0.5rem 0.5rem 0;
+  padding: 0 0.5rem;
   font-size: 0.95rem;
-  line-height: 1.55;
+  line-height: 1.4;
   text-align: justify;
   color: $text-muted;
 }
@@ -439,7 +439,7 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
 .pub-search {
   margin: 1.5rem 0 2rem;
-  font-size: 1.1rem;
+  font-size: 1.65rem;
   text-align: left;
 
   a {
@@ -661,14 +661,17 @@ details.show-more {
     list-style: none;
     cursor: pointer;
     display: inline-block;
-    padding: 0.5rem 1rem;
-    background: $accent-bg;
+    /* No left padding so the visible text aligns with the news/people
+       images above and below at the page-content's left edge. */
+    padding: 0.5rem 1rem 0.5rem 0;
+    background: transparent;
     color: $accent;
     font-weight: 800;
     border-radius: 4px;
     user-select: none;
     &::-webkit-details-marker { display: none; }
     &::after { content: " ▾"; }
+    &:hover { color: $text; }
   }
   &[open] > summary::after { content: " ▴"; }
   &[open] > summary { margin-bottom: 1rem; }
@@ -714,8 +717,8 @@ details.show-more {
 /* ---------- research ---------- */
 
 .page-lead {
-  font-size: 1.15rem;
-  line-height: 1.55;
+  font-size: 1.7rem;
+  line-height: 1.3;
   color: $text;
   margin: 1.5rem 0 2rem;
   border-left: 3px solid $accent-hover;
