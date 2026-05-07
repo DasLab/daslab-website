@@ -318,12 +318,11 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   max-width: none;
   height: 39px;
 }
-/* Math: the photo/gray seam in the trimmed image is at x=652 of 1015
-   = 64.24% of banner width. Banner is at 105% of site-main, so the
-   seam in absolute coords is at 64.24% × 105% = 67.45% of site-main.
-   Bars are at 100% of site-main, so bar-dark of 67.45% lands at the
-   same absolute X as the banner seam. */
-.home-divider-bars .bar-dark  { flex: 0 0 67.45%; }
+/* Photo/gray seam in the trimmed image is at x=654 of 1015 (64.4%).
+   Empirically the rendered bar seam still landed slightly to the left
+   of the banner seam at 67.45%; bumped to 70% for the nudge. Tune
+   here if visually off. */
+.home-divider-bars .bar-dark  { flex: 0 0 70%; }
 .home-divider-bars .bar-light { flex: 1 1 auto; }
 .home-divider-bars .bar-dark,
 .home-divider-bars .bar-light {
