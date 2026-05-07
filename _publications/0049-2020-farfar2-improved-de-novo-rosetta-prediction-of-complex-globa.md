@@ -3,7 +3,7 @@ title: "FARFAR2: Improved de novo Rosetta prediction of complex global RNA folds
 year: 2020
 authors: Watkins, A.M., Rangan, R., Das, R.
 journal: Structure
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2020_Watkins_Structure_WITH_SUPPS.pdf"
+pdf: /assets/pdfs/2020_Watkins_Structure_WITH_SUPPS.pdf
 doi: "https://www.cell.com/structure/fulltext/S0969-2126(20)30180-5"
 order: 49
 link_labels:

@@ -3,7 +3,7 @@ title: Blind predictions of DNA and RNA tweezers experiments with force and torq
 year: 2014
 authors: Chou, F.-C., Lipfert, J., and Das, R.
 journal: PLOS Computational Biology
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2014_Chou_PLOSComptBiol.pdf"
+pdf: /assets/pdfs/2014_Chou_PLOSComptBiol.pdf
 doi: "http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003756"
 order: 105
 link_labels:

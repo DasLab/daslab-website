@@ -29,7 +29,7 @@ permalink: /publications/
         {% endif %}
         <div class="pub-text">
           <p class="pub-authors">{{ pub.authors }}</p>
-          <p class="pub-title">"{{ pub.title }}"</p>
+          <p class="pub-title">"<span class="pub-title-text">{{ pub.title }}</span>"</p>
           {% if pub.journal %}<p class="pub-meta"><em>{{ pub.journal }}</em></p>{% endif %}
           <p class="pub-links">
             {% if pub.pdf %}<a href="{{ pub.pdf }}" target="_blank" rel="noopener">Paper</a>{% endif %}
@@ -59,7 +59,7 @@ permalink: /publications/
           {% endif %}
           <div class="pub-text">
             <p class="pub-authors">{{ pub.authors }}</p>
-            <p class="pub-title">"{{ pub.title }}"</p>
+            <p class="pub-title">"<span class="pub-title-text">{{ pub.title }}</span>"</p>
             {% if pub.journal %}<p class="pub-meta"><em>{{ pub.journal }}</em></p>{% endif %}
             <p class="pub-links">
               {% if pub.pdf %}<a href="{{ pub.pdf }}" target="_blank" rel="noopener">Paper</a>{% endif %}

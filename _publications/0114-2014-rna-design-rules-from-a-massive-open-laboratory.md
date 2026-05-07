@@ -4,7 +4,7 @@ year: 2014
 authors: Lee, J., Kladwang, W., Lee, M., Cantu, D., Azizyan, M., Kim, H., Limpaecher, A., Yoon, S., Treuille, A., Das, R., and EteRNA Participants
 journal: Proceedings of the National Academy of Sciences U.S.A.
 thumb: /assets/images/publications/2014_Lee_PNAS.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2014_Lee_PNAS.pdf"
+pdf: /assets/pdfs/2014_Lee_PNAS.pdf
 doi: "http://www.pnas.org/content/111/6/2122"
 featured: True
 order: 114

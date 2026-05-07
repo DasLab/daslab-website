@@ -4,7 +4,7 @@ year: 2021
 authors: Su, Z.*, Zhang, K.*, Kappel, K.*, Li, S., Palo, M.Z., Pintilie, G.D., Rangan, R., Lou, B., Wei, Yuquan., Das, R., Chiu, W. (*Co-lead authors)
 journal: Nature
 thumb: /assets/images/publications/Tribozyme_cropped.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/s41586-021-03803-w.pdf"
+pdf: /assets/pdfs/s41586-021-03803-w.pdf
 doi: "https://www.nature.com/articles/s41586-021-03803-w"
 featured: True
 order: 39

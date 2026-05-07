@@ -4,7 +4,7 @@ year: 2014
 authors: Sripakdeevong, P., Cevec, M., Chang, A.T., Erat, M.C., Ziegeler, M., Zhao, Q., Fox, G.E., Gao, X., Kennedy, S.D., Kierzek, R., Nikonowicz, E.P., Schwalbe, H., Sigel, R.K.O., Turner, D.H., and Das, R.
 journal: Nature Methods
 thumb: /assets/images/publications/2014_Sripakdeevong_NatMeth.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2014_Sripakdeevong_NatMeth.pdf"
+pdf: /assets/pdfs/2014_Sripakdeevong_NatMeth.pdf
 doi: "http://www.nature.com/nmeth/journal/v11/n4/full/nmeth.2876.html"
 featured: True
 order: 112

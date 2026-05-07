@@ -3,7 +3,7 @@ title: "Bayesian energy landscape tilting: towards concordant models of molecula
 year: 2014
 authors: Beauchamp, K., Pande, V., and Das, R.
 journal: Biophysics Journal
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2014_Beauchamp_BiophysJ.pdf"
+pdf: /assets/pdfs/2014_Beauchamp_BiophysJ.pdf
 doi: "http://www.sciencedirect.com/science/article/pii/S0006349514001854"
 order: 111
 ---

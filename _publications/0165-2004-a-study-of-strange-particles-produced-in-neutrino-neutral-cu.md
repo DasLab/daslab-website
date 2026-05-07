@@ -3,7 +3,7 @@ title: A study of strange particles produced in neutrino neutral current interac
 year: 2004
 authors: Naumov, D. Chukanov, A., Naumova, E., Popv, B., Astier, et al. [NOMAD collaboration]
 journal: Nuclear Physics B
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2004_NOMAD_NucPhysB.pdf"
+pdf: /assets/pdfs/2004_NOMAD_NucPhysB.pdf
 doi: "http://www.sciencedirect.com/science/article/pii/S0550321304006984"
 order: 165
 ---

@@ -4,7 +4,7 @@ year: 2011
 authors: Kladwang, W., VanLang, C.C., Cordero P., and Das, R.
 journal: Nature Chemistry
 thumb: /assets/images/publications/MutateMap_ncRNA_KladwangVanLangCorderoDas_TOC_figure_whitebkgd.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2011_Kladwang_NatChem.pdf"
+pdf: /assets/pdfs/2011_Kladwang_NatChem.pdf
 doi: "http://www.nature.com/nchem/journal/v3/n12/abs/nchem.1176.html"
 featured: True
 order: 132

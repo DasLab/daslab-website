@@ -3,7 +3,7 @@ title: RNA 3D structure prediction guided by independent folding of homologous s
 year: 2019
 authors: Magnus, M., Kappel, K., Das, R., Bujnicki, J.M.
 journal: BMC Bioinformatics
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2019_Magnus_BMCBioinformatics.pdf"
+pdf: /assets/pdfs/2019_Magnus_BMCBioinformatics.pdf
 doi: "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3120-y"
 order: 55
 ---

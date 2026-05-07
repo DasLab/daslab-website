@@ -3,7 +3,7 @@ title: "Functional 5' UTR mRNA structures in eukaryotic translation regulation a
 year: 2017
 authors: Leppek, K., Das, R., and Barna, M.
 journal: Nature Reviews Molecular Cell Biology
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2017_Leppek_NatureMCB.pdf"
+pdf: /assets/pdfs/2017_Leppek_NatureMCB.pdf
 doi: "https://www.nature.com/articles/nrm.2017.103"
 order: 83
 ---

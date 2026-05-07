@@ -4,7 +4,7 @@ year: 2016
 authors: Chou, F-C., Kladwang, W., Kappel, K., and Das, R.
 journal: Proceedings of the National Academy of Sciences U.S.A.
 thumb: /assets/images/publications/RECCES_preview_hires.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2016_Chou_PNAS_with_SOM.pdf"
+pdf: /assets/pdfs/2016_Chou_PNAS_with_SOM.pdf
 doi: "http://www.pnas.org/content/113/30/8430"
 featured: True
 order: 91

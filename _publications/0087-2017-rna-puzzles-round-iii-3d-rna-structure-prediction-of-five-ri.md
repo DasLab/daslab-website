@@ -4,7 +4,7 @@ year: 2017
 authors: "Miao, Z., Adamiak, R. W., Antczak, M., Batey, R. T., Becka, A. J., Biesiada, M., Boniecki, M. J., Bujnicki, J. M., Chen, S.-J., Cheng, C. Y., Chou, F.-C., Ferré-D'Amaré, A. R., Das, R., Dawson, W. K., Ding, F., Dokholyan, N. V., Dunin-Horkawicz, S., Geniesse, C., Kappel, K., Kladwang, W., Krokhotin, A., Lach, G. E., Major, F., Mann, T. H., Magnus, M., Pachulska-Wieczorek, K., Patel, D. J., Piccirilli, J. A., Popenda, M., Purzycka, K. J., Ren, A., Rice, G. M., Santalucia, J. Jr., Sarzynska, J., Szachniuk, M., Tandon, A., Trausch, J. J., Tian, S., Wang, J., Weeks, K. M., Williams, B. II, Xiao, Y., Xu, X., Zhang, D., Zok, T., and Westhof, E."
 journal: RNA
 thumb: /assets/images/publications/Puzzle8MiaoOverlay.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2017_Miao_RNA.pdf"
+pdf: /assets/pdfs/2017_Miao_RNA.pdf
 doi: "http://rnajournal.cshlp.org/content/23/5/655"
 featured: True
 order: 87

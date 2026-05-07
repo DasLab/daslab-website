@@ -3,7 +3,7 @@ title: "EternaBrain: automated RNA design through move sets and strategies from 
 year: 2019
 authors: Koodli, R. V., Keep, B., Coppess, K. R., Portela, F., Eterna Participants, and Das, R.
 journal: PLOS Computational Biology
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/Eternabrain_All.pdf"
+pdf: /assets/pdfs/Eternabrain_All.pdf
 doi: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007059"
 order: 62
 link_labels:

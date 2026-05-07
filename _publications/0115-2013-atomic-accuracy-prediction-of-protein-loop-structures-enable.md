@@ -4,7 +4,7 @@ year: 2013
 authors: Das, R.
 journal: PLOS One
 thumb: /assets/images/publications/2013_Das_PLOSOne.jpg
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2013_Das_PLOSOne.pdf"
+pdf: /assets/pdfs/2013_Das_PLOSOne.pdf
 doi: "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0074830"
 featured: True
 order: 115

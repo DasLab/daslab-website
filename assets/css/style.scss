@@ -602,9 +602,11 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
   /* Title styling depends on whether the entry has a thumbnail:
      - With thumbnail (featured-style): bold, no underline.
-     - Without thumbnail (one-line entries): underlined, regular weight. */
+     - Without thumbnail (one-line entries): underlined, regular weight.
+       Underline applies only to the inner text (.pub-title-text), not
+       to the surrounding quote marks. */
   &:has(.pub-thumb) .pub-title { font-weight: 800; }
-  &:not(:has(.pub-thumb)) .pub-title {
+  &:not(:has(.pub-thumb)) .pub-title-text {
     text-decoration: underline;
     text-underline-offset: 2px;
   }

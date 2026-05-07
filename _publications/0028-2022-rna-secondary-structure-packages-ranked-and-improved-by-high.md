@@ -4,7 +4,7 @@ year: 2022
 authors: Wayment-Steele, H.K., Kladwang, W., Strom, A.I., Lee, J., Treuille, A., Becka, A., Eterna Participants, Das R.
 journal: Nature Methods
 thumb: /assets/images/publications/EternaFold_Thumbnail2.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2022_WaymentSteele_NatureMethods.pdf"
+pdf: /assets/pdfs/2022_WaymentSteele_NatureMethods.pdf
 doi: "https://doi.org/10.1038/s41592-022-01605-0"
 featured: True
 order: 28

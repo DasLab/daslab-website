@@ -4,7 +4,7 @@ year: 2019
 authors: Kappel, K. Jarmoskaite, I. Vaidyanathan, P.P. Greenleaf, W.J. Herschlag, D. and Das R.
 journal: PNAS
 thumb: /assets/images/publications/MS2_KappelddG2.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2019_Kappel_PNAS.pdf"
+pdf: /assets/pdfs/2019_Kappel_PNAS.pdf
 doi: "https://www.pnas.org/content/early/2019/04/03/1819047116"
 featured: True
 order: 67

@@ -4,7 +4,7 @@ year: 2018
 authors: Watkins, A.M., Geniesse, C., Kladwang, W., Zakrevsky, P., Jaeger, L., and Das, R.
 journal: Science Advances
 thumb: /assets/images/publications/stepwise_icon.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2018_Watkins_ScienceAdvances_WITH_SUPPS.pdf"
+pdf: /assets/pdfs/2018_Watkins_ScienceAdvances_WITH_SUPPS.pdf
 doi: "https://doi.org/10.1126/sciadv.aar5316"
 featured: True
 order: 76

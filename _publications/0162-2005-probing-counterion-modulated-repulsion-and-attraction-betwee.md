@@ -3,7 +3,7 @@ title: Probing counterion modulated repulsion and attraction between nucleic aci
 year: 2005
 authors: Bai, Y., Das, R., Millett, I.S., Herschlag, D., and Doniach, S.
 journal: Proceedings of the National Academy of Sciences U.S.A.
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2005_Bai_PNAS.pdf"
+pdf: /assets/pdfs/2005_Bai_PNAS.pdf
 doi: "http://www.pnas.org/content/102/4/1035.long"
 order: 162
 ---

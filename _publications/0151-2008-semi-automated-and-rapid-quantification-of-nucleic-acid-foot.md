@@ -3,7 +3,7 @@ title: Semi-automated and rapid quantification of nucleic acid footprinting and 
 year: 2008
 authors: Laederach, A., Das, R., Vicens, Q., Pearlman, S., Brenowitz, M., Herschlag, D., and Altman, R.B.
 journal: Nature Protocols
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2008_Laederach_NatProtoc.pdf"
+pdf: /assets/pdfs/2008_Laederach_NatProtoc.pdf
 doi: "http://www.nature.com/nprot/journal/v3/n9/abs/nprot.2008.134.html"
 order: 151
 ---

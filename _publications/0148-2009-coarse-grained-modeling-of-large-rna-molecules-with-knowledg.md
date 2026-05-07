@@ -3,7 +3,7 @@ title: Coarse-grained modeling of large RNA molecules with knowledge-based poten
 year: 2009
 authors: Jonikas, M.A., Radmer, R.J., Laederach, A., Das, R., Pearlman, S., Herschlag D., and Altman, R.B.
 journal: RNA
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2009_Jonikas_RNA.pdf"
+pdf: /assets/pdfs/2009_Jonikas_RNA.pdf
 doi: "http://rnajournal.cshlp.org/content/15/2/189.long"
 order: 148
 ---

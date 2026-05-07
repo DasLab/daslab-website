@@ -4,7 +4,7 @@ year: 2015
 authors: Cheng, C.Y., Chou, F.-C., Kladwang, W., Tian, S., Cordero, P., and Das, R.
 journal: eLife
 thumb: /assets/images/publications/2015_Cheng_eLife.png
-pdf: "https://daslab.stanford.edu/site_data/pub_pdf/2015_Cheng_eLife.pdf"
+pdf: /assets/pdfs/2015_Cheng_eLife.pdf
 doi: "http://elifesciences.org/content/4/e07600"
 featured: True
 order: 96
