@@ -151,7 +151,7 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 .site-main {
   max-width: $container;
   margin: 0 auto;
-  padding: 1rem 1.25rem 3rem;
+  padding: 1rem 1.25rem 1rem;
 }
 
 .page-content {
@@ -164,7 +164,7 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 .page-hero {
   position: relative;
   max-width: $container;
-  margin: 1rem auto 2rem;
+  margin: 1rem auto 1.5rem;
   aspect-ratio: 973 / 221;
   background-size: cover;
   background-position: center;
@@ -181,6 +181,22 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   max-height: 60%;
   z-index: 2;
   filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.25));
+}
+
+/* Mobile: pin the hero to a fixed height (about a person-card height) and
+   show the right-most portion (the teal page-name tab + gray block). The
+   left part of the photo can be cropped — it's the less-informative side. */
+@media (max-width: $bp-phone) {
+  .page-hero {
+    aspect-ratio: auto;
+    height: 200px;
+    background-size: auto 100%;
+    background-position: right center;
+  }
+  .page-hero-tab {
+    width: 50%;
+    bottom: 12%;
+  }
 }
 
 /* ---------- sprite word-art (legacy CSS sprites preserved) ---------- */
@@ -401,23 +417,42 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 }
 .pub-search a:hover .pub-search-arrow { background-position: -29px 0; }
 
-.publications-year {
-  color: $accent-hover;
-  font-size: 2rem;
-  font-weight: 800;
-  margin: 2.5rem 0 0.75rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 2px solid $accent-bg;
+/* Two-column year/papers layout: year label on the left, all that year's
+   publications stacked on the right. Each year-group is its own row, with
+   double spacing between groups. */
+.pub-year-group {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2rem;
+  margin: 0 0 2.5rem;
+  align-items: start;
 }
+
+.pub-year {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 400;
+  color: $accent-hover;
+  line-height: 1;
+  position: sticky;
+  top: 0.5rem;
+}
+
+.pub-list { min-width: 0; }
 
 .publication {
   display: grid;
   grid-template-columns: 1fr;
   align-items: start;
-  padding: 0.85rem 0;
-  border-bottom: 1px dotted $text-faint;
+  padding: 0.6rem 0;
 
-  /* When a thumbnail is present, switch to two-column layout */
+  /* Dividers only between publications (not before the first or after the
+     last in a given year group). */
+  & + .publication { border-top: 1px dotted $text-faint; }
+
+  /* When a thumbnail is present, switch to two-column layout. The thumbnail
+     is fixed-width; height stays auto so the natural aspect ratio is
+     preserved (no letterboxing). */
   &:has(.pub-thumb) {
     grid-template-columns: 180px 1fr;
     gap: 1.25rem;
@@ -425,39 +460,40 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
   .pub-thumb {
     width: 180px;
-    max-height: 180px;
-    object-fit: contain;
+    height: auto;
     background: transparent;
     border-radius: 3px;
     align-self: start;
   }
   .pub-text { min-width: 0; }
   .pub-title {
-    margin: 0 0 0.4rem;
-    font-size: 1rem;
+    margin: 0.15rem 0 0.2rem;
+    font-size: 0.95rem;
     color: $text;
     font-weight: 800;
-    line-height: 1.4;
+    line-height: 1.3;
   }
   .pub-authors {
-    margin: 0 0 0.3rem;
-    font-size: 0.92rem;
-    color: $text-muted;
-    line-height: 1.5;
-  }
-  .pub-meta {
-    margin: 0 0 0.3rem;
-    font-size: 0.92rem;
-    color: $text-faint;
-  }
-  .pub-links {
     margin: 0;
     font-size: 0.9rem;
+    color: $text-muted;
+    line-height: 1.3;
+  }
+  .pub-meta {
+    margin: 0;
+    font-size: 0.9rem;
+    color: $text-faint;
+    line-height: 1.3;
+  }
+  .pub-links {
+    margin: 0.2rem 0 0;
+    font-size: 0.85rem;
     color: $accent-hover;
+    line-height: 1.3;
     a {
       color: $accent-hover;
       &:hover { color: $text; }
-      &::before { content: "| "; color: $text-faint; padding-right: 0.25rem; }
+      &::before { content: " | "; color: $text-faint; padding: 0 0.15rem; }
       &:first-child::before { display: none; }
     }
   }
@@ -465,13 +501,20 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
 
 .publication.featured {
   background: $accent-bg;
-  padding: 1rem;
-  margin: 0.5rem 0;
-  border-bottom: none;
+  padding: 0.85rem;
+  margin: 0.4rem 0;
   border-radius: 4px;
+  & + .publication { border-top: none; }
 }
+.publication.featured + .publication.featured { border-top: none; margin-top: 0.4rem; }
 
+@media (max-width: $bp-tablet) {
+  .pub-year-group { grid-template-columns: 80px 1fr; gap: 1rem; }
+  .pub-year { font-size: 1.75rem; }
+}
 @media (max-width: $bp-phone) {
+  .pub-year-group { grid-template-columns: 1fr; }
+  .pub-year { position: static; margin-bottom: 0.5rem; }
   .publication:has(.pub-thumb) { grid-template-columns: 1fr; }
   .publication .pub-thumb { width: 100%; max-width: 240px; }
 }
@@ -621,35 +664,27 @@ details.show-more {
 
 .research-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 160px 1fr 280px;
+  gap: 1.75rem;
   align-items: center;
   margin: 1.5rem 0;
 
-  h2 {
-    grid-column: 1;
-    margin: 0 0 0.5rem;
-    color: $accent;
-    font-size: 1.4rem;
-  }
-  p {
-    grid-column: 1;
+  > i { align-self: start; margin-top: 0.5rem; }
+  > p {
     margin: 0;
     color: $text-muted;
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.55;
+    text-align: justify;
   }
-  a {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    text-align: center;
-  }
+  > a { text-align: center; }
   img { max-width: 100%; border-radius: 4px; }
 }
 @media (max-width: $bp-phone) {
   .research-row {
     grid-template-columns: 1fr;
-    a { grid-column: 1; grid-row: auto; }
+    > i { margin: 0 auto; }
+    > a { grid-column: 1; }
   }
 }
 
@@ -671,8 +706,8 @@ details.show-more {
 
 .site-footer {
   max-width: $container;
-  margin: 2rem auto 1rem;
-  padding: 0 0 1.5rem;
+  margin: 0.5rem auto 1rem;
+  padding: 0 0 1rem;
 }
 
 /* Two-tone bars aligned with the hero banner: dark gradient on the left
@@ -680,8 +715,7 @@ details.show-more {
 .footer-bars {
   display: flex;
   height: 39px;
-  margin-bottom: 1.5rem;
-  gap: 6px;
+  margin-bottom: 1.25rem;
 }
 .footer-bar-dark,
 .footer-bar-teal {
@@ -689,22 +723,26 @@ details.show-more {
   background-image: url("{{ '/assets/images/site/public/nav_banners.png' | relative_url }}");
   background-repeat: no-repeat;
 }
-/* Sprite slices from nav_banners.png — match the legacy footer_left and footer_right.
-   599px wide dark gradient + 256px wide teal block; ratio ≈ 70/30. */
-.footer-bar-dark { flex: 0 0 64%; background-position: 0 -15px; }
-.footer-bar-teal { flex: 1 1 auto; background-position: -514px -55px; }
+/* Sprite slices from nav_banners.png. The dark gradient (footer_left) lives at
+   y=15-54, teal block (footer_right) at x=0-256, y=55-94. Ratio ~70/30 to
+   align with the hero banner's photo/tab split. */
+.footer-bar-dark { flex: 0 0 70%; background-position: 0 -15px; background-size: auto 39px; }
+.footer-bar-teal { flex: 1 1 auto; background-position: 0 -55px; background-size: auto 39px; }
+
+/* Home page already has decorative bars between hero and content; suppress the
+   footer pair so the home doesn't look top-heavy with bars. */
+.page-home .footer-bars { display: none; }
 
 .institutional-logos {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  gap: 1.25rem;
+  gap: 4rem;
+  padding: 0.5rem 0;
 
   img {
-    height: 50px;
     width: auto;
-    opacity: 0.85;
+    opacity: 0.9;
     transition: opacity 0.15s;
     &:hover { opacity: 1; }
   }

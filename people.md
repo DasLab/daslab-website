@@ -42,7 +42,7 @@ permalink: /people/
 
 {% if hidden.size > 0 %}
 <details class="show-more">
-  <summary>Show {{ hidden.size }} earlier alumni</summary>
+  <summary>Show more alumni</summary>
   <ul class="alumni-list">
   {% for a in hidden %}
     <li>
