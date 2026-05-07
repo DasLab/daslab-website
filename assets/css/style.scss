@@ -178,11 +178,11 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   bottom: 8%;
   width: 36%;
   height: auto;
-  /* Lock aspect ratio explicitly so the rendered tab always matches the
-     source PNG (349x111). Setting only ONE dimension (width) plus
-     aspect-ratio guarantees no distortion — never combine with max-height
-     since that would override the aspect ratio when clipping kicks in. */
-  aspect-ratio: 349 / 111;
+  max-height: 60%;
+  /* The <img>'s intrinsic 349:111 aspect ratio keeps the shape
+     automatically — no explicit aspect-ratio rule is needed (and
+     adding one alongside width + max-height made the tab jump around
+     during browser-window resizes). */
   z-index: 2;
   filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.25));
 }
@@ -199,11 +199,11 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
     background-position: 0% 50% !important;
   }
   .page-hero-tab {
-    /* Match the source PNG's natural 349:111 ratio. Width is the only
-       constraint; height auto-computes from aspect-ratio. No max-height
-       (it would override the aspect ratio when it kicks in). */
+    /* Mobile: just width + height: auto. The <img>'s intrinsic 349:111
+       aspect ratio handles the rest. */
     width: 80%;
     height: auto;
+    max-height: 60%;
     bottom: 15%;
     right: -2%;
   }
