@@ -736,7 +736,7 @@ details.show-more {
     border-radius: 4px;
   }
 }
-@media (max-width: $bp-phone) {
+@media (max-width: $bp-tablet) {
   .research-row {
     grid-template-columns: 1fr;
     > i { margin: 0 auto; }
