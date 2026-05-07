@@ -370,14 +370,22 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
   .callout-break { display: none; }
 }
 
-/* Small-phone portrait: the home banner is much smaller proportionally,
-   so shrink the elements directly underneath it (callouts + bars +
-   institutional logos) to keep the overall page feeling balanced.
+/* Phone-portrait: the home banner is much smaller proportionally, so
+   shrink the elements directly underneath it (callouts + bars + logos)
+   to keep the overall page feeling balanced. Applied across all phone
+   widths in portrait orientation, not just iPhone mini.
    Mission paragraph kept at ~75% (full 50% would be unreadable). */
-@media (max-width: 480px) and (orientation: portrait) {
+@media (max-width: $bp-phone) and (orientation: portrait) {
   .home-callout-left  { font-size: 1.3rem; }
   .home-callout-right { font-size: 0.75rem; }
-  .home-mission       { font-size: 0.7rem; }
+  .home-mission {
+    font-size: 0.7rem;
+    /* Left-align (override the desktop justify) and drop the side
+       padding so the first character lines up under the start of
+       'what we do'. */
+    text-align: left;
+    padding: 0;
+  }
 
   .home-divider-bars,
   .home-divider-bars .bar-dark,
@@ -385,10 +393,15 @@ hr { border: 0; border-top: 1px dotted $text-faint; margin: 2rem 0; }
     height: 20px;
   }
 
+  /* Logos at 50% of their default size on phone portrait — all pages. */
   .institutional-logos .logo-stanford-university,
-  .institutional-logos .logo-stanford-medicine,
-  .institutional-logos .logo-hhmi {
+  .institutional-logos .logo-stanford-medicine {
     height: 22px;
+  }
+  /* HHMI: 50% of its already-20%-smaller default, so net ~40% of the
+     original (≈ 70% smaller than where the others started). */
+  .institutional-logos .logo-hhmi {
+    height: 18px;
   }
 }
 
@@ -920,7 +933,9 @@ details.show-more {
 
   .logo-stanford-university { height: 45px; width: auto; }
   .logo-stanford-medicine   { height: 45px; width: auto; }
-  .logo-hhmi                { height: 45px; width: auto; }
+  /* HHMI is rendered 20% smaller than the others across all viewports
+     per user preference (it's a wider lockup, looked dominant at 45px). */
+  .logo-hhmi                { height: 36px; width: auto; }
 }
 
 @media (max-width: $bp-phone) {
