@@ -936,14 +936,17 @@ details.show-more {
      edge of logo_home.png anchored to the right of the viewport — matches
      the .page-hero approach used on interior pages. */
   .home-banner {
-    /* Mobile: right-align the source image so the gray block + the
-       baked-in 'RNA fold & function from scratch' teal tab stay visible;
-       the left side of the photo is cropped at the viewport edge.
-       aspect-ratio 1.96/1 + background-size auto 200% means the visible
-       viewport equals exactly 2/3 of the rendered image width — so on
-       any phone width (including iPhone mini at 375px) the right ~2/3
-       of the source is in view. */
-    aspect-ratio: 1.96 / 1;
+    /* Mobile: right-align so the gray block + the baked-in 'RNA fold &
+       function from scratch' tab stay visible; the left side of the
+       photo crops at the viewport edge.
+
+       Image is 1015×696, so background-size: auto 200% gives a
+       rendered-image width of 2 × H × (1015/696) = 2.917H. To make the
+       visible viewport equal 3/4 of the rendered image width:
+           W = 0.75 × 2.917 × H  →  W / H = 2.188.
+       Using aspect-ratio: 2.19 / 1 gets exactly that — viewport shows
+       3/4 of source at any phone width, with the left 1/4 cropped. */
+    aspect-ratio: 2.19 / 1;
     height: auto;
     background-size: auto 200%;
     background-position: 100% 0;
